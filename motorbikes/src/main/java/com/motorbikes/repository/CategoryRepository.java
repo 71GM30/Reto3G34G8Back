@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Categoria
- * @author dario
+ * 
+ * @author 71GM30
  */
 @Repository
 public class CategoryRepository {
@@ -28,5 +28,8 @@ public class CategoryRepository {
   
     public Category save(Category category){
         return categoryCrudRepository.save(category);
+    }
+    public void delete(Category category){
+         categoryCrudRepository.delete(category);
     }
 }

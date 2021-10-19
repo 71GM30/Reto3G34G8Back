@@ -15,8 +15,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Mensajes
- * @author dario
+ * 
+ * @author 71GM30
  */
 @Entity
 @Table(name = "message")

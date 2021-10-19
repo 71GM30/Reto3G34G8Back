@@ -12,8 +12,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Representa a un usuario administativo
- * @author dario
+ * 
+ * @author 71GM30
  */
 
 @Entity

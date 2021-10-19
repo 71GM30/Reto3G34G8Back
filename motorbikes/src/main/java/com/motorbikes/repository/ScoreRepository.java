@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Score
- * @author dario
+ * 
+ * @author 71GM30
  */
 @Repository
 public class ScoreRepository {
@@ -26,5 +26,8 @@ public class ScoreRepository {
   
     public Score save(Score score){
         return scoreCrudRepository.save(score);
+    }
+    public void delete(Score score){
+        scoreCrudRepository.delete(score);
     }
 }

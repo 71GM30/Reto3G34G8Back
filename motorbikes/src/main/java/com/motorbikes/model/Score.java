@@ -14,8 +14,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Score
- * @author dario
+ * 
+ * @author 71GM30
  */
 @Entity
 @Table(name = "score")

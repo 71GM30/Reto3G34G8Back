@@ -7,8 +7,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 /**
- * Categoria
- * @author dario
+ * 
+ * @author 71GM30
  */
 @Service
 public class CategoryService {
@@ -18,6 +18,9 @@ public class CategoryService {
 
     public List<Category> getAll() {
         return categoryRepository.getAll();
+    }
+     public Optional<Category> getCategory(int CategoriaId) {
+        return categoryRepository.getCategory(CategoriaId);
     }
 
     public Category save(Category category) {
@@ -32,4 +35,29 @@ public class CategoryService {
             }
         }
     }
+    
+     public Category update(Category categoria){
+        if(categoria.getId()!=null){
+            Optional<Category>evento=categoryRepository.getCategory(categoria.getId());
+            if(!evento.isEmpty()){
+                if(categoria.getDescription()!=null){
+                    evento.get().setDescription(categoria.getDescription());
+                }
+                if(categoria.getName()!=null){
+                    evento.get().setName(categoria.getName());
+                }
+                return categoryRepository.save(evento.get());
+            }
+        }
+        return categoria;
+    }
+     
+    public boolean delete(int categoriaId){
+        Boolean d=getCategory(categoriaId).map(categoria -> {
+            categoryRepository.delete(categoria);
+            return true;
+        }).orElse(false);
+        return d;
+    }
+    
 }

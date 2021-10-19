@@ -7,8 +7,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 /**
- * Cliente
- * @author dario
+ * 
+ * @author 71GM30
  */
 @Repository
 public class ClientRepository {
@@ -25,5 +25,8 @@ public class ClientRepository {
     
     public Client save(Client client){
         return clientCrudRepository.save(client);
+    }
+    public void delete(Client client){
+        clientCrudRepository.delete(client);
     }
 }

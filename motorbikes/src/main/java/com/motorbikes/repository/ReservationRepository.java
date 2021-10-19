@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Reservacion
- * @author dario
+ * 
+ * @author 71GM30
  */
 @Repository
 public class ReservationRepository {
@@ -26,5 +26,9 @@ public class ReservationRepository {
   
     public Reservation save(Reservation reservation){
         return reservationCrudRepository.save(reservation);
+    }
+    
+    public void delete(Reservation reservation){
+        reservationCrudRepository.save(reservation);
     }
 }

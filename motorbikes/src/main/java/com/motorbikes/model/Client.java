@@ -16,8 +16,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Representa a un cliente
- * @author dario
+ * 
+ * @author 71GM30
  */
 @Entity
 @Table(name = "client")

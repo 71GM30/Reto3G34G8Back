@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- *
+ * 
  * @author 71GM30
  */
 @Service
@@ -23,6 +23,10 @@ public class MotorbikeService {
     
     public List<Motorbike> getAll(){
         return motorbikesRepository.getAll();
+    }
+    
+    public Optional<Motorbike> getMotorbike(int motorbikeId) {
+        return motorbikesRepository.getMotorbike(motorbikeId);
     }
     
     public Motorbike save(Motorbike motorbike){
@@ -38,4 +42,43 @@ public class MotorbikeService {
                 }
         }
     }
+    
+    public Motorbike update(Motorbike motorbike){
+        if(motorbike.getId()!=null){
+            Optional<Motorbike> evento=motorbikesRepository.getMotorbike(motorbike.getId());
+            if(!evento.isEmpty()){
+                if(motorbike.getName()!=null){
+                    evento.get().setName(motorbike.getName());
+                }
+                if(motorbike.getBrand()!=null){
+                    evento.get().setBrand(motorbike.getBrand());
+                }
+                if(motorbike.getYear()!=null){
+                    evento.get().setYear(motorbike.getYear());
+                }
+                if(motorbike.getDescription()!=null){
+                    evento.get().setDescription(motorbike.getDescription());
+                }
+                if(motorbike.getCategory()!=null){
+                    evento.get().setCategory(motorbike.getCategory());
+                }
+                motorbikesRepository.save(evento.get());
+                return evento.get();
+            }else{
+                return motorbike;
+            }
+        }else{
+            return motorbike;
+        }
+    }
+
+
+    public boolean delete(int motorbikeId) {
+        Boolean aBoolean = getMotorbike(motorbikeId).map(bike -> {
+            motorbikesRepository.delete(bike);
+            return true;
+        }).orElse(false);
+        return aBoolean;
+    }
+    
 }
